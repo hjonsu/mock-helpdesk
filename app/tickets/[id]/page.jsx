@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import React from "react";
+import { resolve } from "styled-jsx/css";
 
 export const dynamicParams = true;
 
@@ -16,6 +17,9 @@ export async function generateStaticParams() {
 }
 
 async function getTicket(id) {
+  // psuedo delay
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+
   const res = await fetch("http://localhost:4000/tickets/" + id, {
     next: {
       revalidate: 60,
