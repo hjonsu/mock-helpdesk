@@ -1,0 +1,39 @@
+{
+  "tickets": [
+    {
+      "id": "1",
+      "title": "Application crashes on startup",
+      "body": "Every time I try to start the application, it crashes immediately and I get an error message that says 'Unexpected error occurred'. My operating system is macOS Big Sur.",
+      "priority": "high",
+      "user_email": "willywonka@gmail.com"
+    },
+    {
+      "id": "2",
+      "title": "Error when opening application",
+      "body": "I'm encountering an error every time I attempt to launch the application. The error code is B123. I'm using the latest version of the software on my Windows 10 machine.",
+      "priority": "high",
+      "user_email": "johndoe@gmail.com"
+    },
+    {
+      "id": "3",
+      "title": "Website not responsive on mobile",
+      "body": "When I view the website on my mobile device, the layout appears skewed and some buttons are not accessible. I'm using an iPhone 12 Pro with Safari browser.",
+      "priority": "medium",
+      "user_email": "janedoe@yahoo.com"
+    },
+    {
+      "id": "4",
+      "title": "Unable to install latest update",
+      "body": "When I try to install the latest update, I receive an error message stating 'Installation failed. Please try again later.' I've attempted to install the update multiple times with no success.",
+      "priority": "medium",
+      "user_email": "bobsmith@hotmail.com"
+    },
+    {
+      "id": "5",
+      "title": "Forgot password and can't reset",
+      "body": "I have forgotten my password and when I try to reset it, I never receive the email with the reset link. I've checked my spam folder and it's not there either.",
+      "priority": "low",
+      "user_email": "sallyjones@icloud.com"
+    }
+  ]
+}
