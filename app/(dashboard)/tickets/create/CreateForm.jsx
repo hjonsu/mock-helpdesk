@@ -1,6 +1,8 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import api from "../../../../api.js";
 
 export default function CreateForm() {
   const router = useRouter();
@@ -14,27 +16,33 @@ export default function CreateForm() {
     e.preventDefault();
     setIsLoading(true);
 
-    const ticket = {
+    const newTicket = {
       title,
       body,
       priority,
-      user_email: "johnDoe@gmail.com",
     };
 
-    const res = await fetch("http://localhost:4000/tickets", {
+    const res = await fetch("http://localhost:3000/api/tickets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(ticket),
+      body: JSON.stringify(newTicket),
     });
 
-    if (res.status === 201) {
-      router.refresh;
+    const json = await res.json();
+
+    console.log(json, "json");
+
+    if (json.error) {
+      console.log(error.message);
+    }
+    if (json.data) {
+      router.refresh();
       router.push("/tickets");
     }
   };
 
   return (
-    <form className="w-1/2" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="w-1/2">
       <label>
         <span>Title:</span>
         <input
@@ -46,13 +54,12 @@ export default function CreateForm() {
       </label>
       <label>
         <span>Body:</span>
-        <input
+        <textarea
           required
           onChange={(e) => setBody(e.target.value)}
           value={body}
         />
       </label>
-
       <label>
         <span>Priority:</span>
         <select onChange={(e) => setPriority(e.target.value)} value={priority}>
@@ -61,10 +68,9 @@ export default function CreateForm() {
           <option value="high">High Priority</option>
         </select>
       </label>
-
       <button className="btn-primary" disabled={isLoading}>
-        {isLoading && <span>Submitting...</span>}
-        {!isLoading && <span>Submit Ticket</span>}
+        {isLoading && <span>Adding...</span>}
+        {!isLoading && <span>Add Ticket</span>}
       </button>
     </form>
   );
