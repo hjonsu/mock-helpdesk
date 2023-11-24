@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import api from "../../../../api.js";
 
 export default function CreateForm() {
   const router = useRouter();
@@ -29,8 +28,6 @@ export default function CreateForm() {
     });
 
     const json = await res.json();
-
-    console.log(json, "json");
 
     if (json.error) {
       console.log(error.message);

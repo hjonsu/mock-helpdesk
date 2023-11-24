@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function GET(request) {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
-  console.log("url", url, "code", code);
 
   if (code) {
     const supabase = createRouteHandlerClient({ cookies });

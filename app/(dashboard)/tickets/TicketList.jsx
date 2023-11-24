@@ -16,7 +16,6 @@ export default async function TicketList() {
   // psuedo delay
   // await new Promise((resolve) => setTimeout(resolve, 3000));
   const tickets = await getTickets();
-  // const tickets = [{ title: "1kj32", body: "dlkjafldkjf" }];
   return (
     <>
       {tickets.map((ticket) => (
