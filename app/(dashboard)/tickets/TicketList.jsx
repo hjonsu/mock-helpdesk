@@ -1,20 +1,22 @@
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 import Link from "next/link";
-import React from "react";
 
 async function getTickets() {
-  const res = await fetch("http://localhost:4000/tickets", {
-    next: {
-      revalidate: 0, // 0 will opt out of cache. Better functionality for a helpdesk.
-    },
-  });
+  const supabase = createServerComponentClient({ cookies });
 
-  return res.json();
+  const { data, error } = await supabase.from("tickets").select();
+
+  error ? console.log(error.message) : null;
+
+  return data;
 }
 
 export default async function TicketList() {
   // psuedo delay
   // await new Promise((resolve) => setTimeout(resolve, 3000));
   const tickets = await getTickets();
+  // const tickets = [{ title: "1kj32", body: "dlkjafldkjf" }];
   return (
     <>
       {tickets.map((ticket) => (
