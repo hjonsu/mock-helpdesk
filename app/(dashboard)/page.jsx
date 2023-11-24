@@ -6,15 +6,10 @@ export default function Home() {
     <main className="">
       <h2>Dashboard</h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-        sollicitudin consectetur blandit. Donec at mi efficitur, imperdiet justo
-        id, molestie augue. Praesent tortor risus, egestas quis ornare eget,
-        mattis at eros. Integer sit amet ante id neque iaculis efficitur ut vel
-        neque. Ut efficitur velit at nulla elementum, in convallis ligula
-        dictum. Nullam sollicitudin diam id nisi dictum, et ornare libero
-        pellentesque. Donec enim dui, laoreet vitae consectetur id, sodales in
-        ex. Aenean auctor risus ante, at tempus urna gravida eget. Nullam dictum
-        neque quis est scelerisque, in consectetur neque ullamcorper.
+        Welcome to our Helpdesk Dashboard Application! This application is
+        designed to provide you with real-time insights and effortless
+        management of your helpdesk operations. Here is a glimpse of some sample
+        text to showcase the capabilities of our dashboard:
       </p>
       <div className="flex justify-center my-8">
         <Link href="/tickets">
@@ -23,7 +18,7 @@ export default function Home() {
       </div>
       <h2>Company Updates</h2>
       <div className="card">
-        <h3>New member of the web dev team...</h3>
+        <h3>Company office renovations saturday...</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at
           quam. Dolores omnis possimus quam soluta rerum illo laborum ullam
@@ -31,7 +26,7 @@ export default function Home() {
         </p>
       </div>
       <div className="card">
-        <h3>New website live!</h3>
+        <h3>Helpdesk live</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at
           quam. Dolores omnis possimus quam soluta rerum illo laborum ullam
@@ -40,7 +35,7 @@ export default function Home() {
           debitis, autem temporibus quo repellat illum unde id iste veritatis
           eveniet, aspernatur enim quas.
         </p>
-      </div>{" "}
+      </div>
     </main>
   );
 }

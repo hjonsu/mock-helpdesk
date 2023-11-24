@@ -4,7 +4,7 @@
 
 /* base styles */
 body {
-  background: #ebf0fa;
+  background: #cbd5e1;
   @apply text-gray-500 m-8;
 }
 h1,
@@ -24,14 +24,14 @@ p > a {
 /* nav styles */
 nav {
   @apply pb-4
-    border-b-2 border-gray-200
+    border-b-2 border-slate-950
     flex items-center gap-5 
     my-10 mx-auto 
     max-w-5xl;
 }
 nav a,
 nav span {
-  @apply text-gray-500;
+  @apply text-gray-600;
 }
 nav a:hover {
   @apply text-black;
@@ -97,8 +97,9 @@ form button {
 
 /* card styles */
 .card {
-  @apply bg-white 
+  @apply bg-slate-200
     shadow-sm 
+    border-2
     rounded-md 
     py-3 px-4 my-4 
     relative 
@@ -130,4 +131,18 @@ form button {
 .card .pill {
   @apply absolute bottom-0 right-0 
     rounded-tl-md;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  /* Customize the scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  /* Customize the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+  /* Customize the scrollbar thumb */
 }
