@@ -28,7 +28,7 @@ export async function generateMetadata({ params }) {
 
 async function getTicket(id) {
   // psuedo delay
-  //   await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
 
   const supabase = createServerComponentClient({ cookies });
 

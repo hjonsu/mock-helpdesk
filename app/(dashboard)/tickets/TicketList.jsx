@@ -14,7 +14,7 @@ async function getTickets() {
 
 export default async function TicketList() {
   // psuedo delay
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 20000));
   const tickets = await getTickets();
   return (
     <>
