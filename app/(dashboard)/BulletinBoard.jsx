@@ -1,5 +1,6 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import CardList from "../components/CardList";
 
 export default async function BulletinBoard() {
   const supabase = createServerComponentClient({ cookies });
@@ -8,18 +9,17 @@ export default async function BulletinBoard() {
 
   error ? console.log(error) : null;
 
+  //   const [currentPage, setCurrentPage] = useState(1);
+  //   const pageSize = 10;
+
+  //   const onPageChange = (page) => {
+  //     setCurrentPage(page);
+  //   };
+
   return (
     <>
       <h2>Bulletin Board</h2>
-      {data.map((notice, i) => {
-        return (
-          <div className="card" key={i}>
-            <h3>{notice.title}</h3>
-            <p>{notice.body}</p>
-            <p className="text-xs">From: {notice.user_email}</p>
-          </div>
-        );
-      })}
+      <CardList notices={data} />
     </>
   );
 }
