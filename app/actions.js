@@ -19,6 +19,8 @@ export async function addTicket(formData) {
   //   } catch (error) {
   //     throw new Error("Failed to create new ticket.");
   //   }
+  // try catch doesn't seem to work well here.
+
   const { error } = await supabase
     .from("tickets")
     .insert({ ...ticket, user_email: session.user.email });
