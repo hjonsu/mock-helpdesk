@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 export async function addTicket(formData) {
-  const ticket = object.fromEntries(formData);
+  const ticket = Object.fromEntries(formData);
 
   const supabase = createServerActionClient({ cookies });
 
@@ -18,6 +18,6 @@ export async function addTicket(formData) {
     .from("tickets")
     .insert({ ...ticket, user_email: session.user.email });
 
-  revalidatePath("/");
-  redirect("/ticekts");
+  revalidatePath("/tickets");
+  redirect("/tickets");
 }
