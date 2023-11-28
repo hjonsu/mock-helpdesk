@@ -1,13 +1,15 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import CardList from "../components/CardList";
-import { FaNotesMedical } from "react-icons/fa6";
 import Modal from "../components/Modal";
 
 export default async function BulletinBoard() {
   const supabase = createServerComponentClient({ cookies });
 
-  const { data, error } = await supabase.from("notices").select();
+  const { data, error } = await supabase
+    .from("notices")
+    .select()
+    .order("created_at", { ascending: false });
 
   error ? console.log(error) : null;
 
