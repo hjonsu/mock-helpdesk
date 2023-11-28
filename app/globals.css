@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /* base styles */
+html {
+  scrollbar-gutter: stable both-edges;
+}
 body {
   background: #cbd5e1;
   @apply text-gray-500 m-8;
