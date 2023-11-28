@@ -2,10 +2,6 @@ import { updateProfile } from "@/app/actions";
 import SubmitButton from "@/app/components/SubmitButton";
 
 export default function ProfileForm() {
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log("clicked!");
-  };
   return (
     <form action={updateProfile}>
       <label>

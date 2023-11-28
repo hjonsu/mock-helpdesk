@@ -27,7 +27,6 @@ export default async function DashboardLayout({ children }) {
   }
 
   !data.session ? redirect("/login") : null;
-  console.log(data.session, "userklajfdlakjfldk");
   const userData = {
     ...user.data,
     email: data.session.user.email,

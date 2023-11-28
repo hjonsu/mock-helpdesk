@@ -14,13 +14,6 @@ export async function addTicket(formData) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  //   try {
-  //     console.log(error);
-  //   } catch (error) {
-  //     throw new Error("Failed to create new ticket.");
-  //   }
-  // try catch doesn't seem to work well here.
-
   const { error } = await supabase
     .from("tickets")
     .insert({ ...ticket, user_email: session.user.email });
@@ -61,7 +54,6 @@ export async function updateProfile(formData) {
     .single();
 
   if (check.data.error) {
-    console.log(check.data.error, "inside check async function");
     throw new Error("Could not get user information");
   }
 
@@ -83,4 +75,24 @@ export async function updateProfile(formData) {
 
   revalidatePath("/profile");
   redirect("/profile");
+}
+
+export async function addNotice(formData) {
+  const noticeInfo = Object.fromEntries(formData);
+  const supabase = createServerActionClient({ cookies });
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const { error } = await supabase
+    .from("notices")
+    .insert({ ...noticeInfo, user_email: session.user.email });
+
+  if (error) {
+    throw new Error("Failed to create new bulletin.");
+  }
+
+  revalidatePath("/");
+  redirect("/");
 }

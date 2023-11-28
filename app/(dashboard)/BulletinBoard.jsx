@@ -1,6 +1,8 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import CardList from "../components/CardList";
+import { FaNotesMedical } from "react-icons/fa6";
+import Modal from "../components/Modal";
 
 export default async function BulletinBoard() {
   const supabase = createServerComponentClient({ cookies });
@@ -9,16 +11,12 @@ export default async function BulletinBoard() {
 
   error ? console.log(error) : null;
 
-  //   const [currentPage, setCurrentPage] = useState(1);
-  //   const pageSize = 10;
-
-  //   const onPageChange = (page) => {
-  //     setCurrentPage(page);
-  //   };
-
   return (
     <>
-      <h2>Bulletin Board</h2>
+      <div className="flex justify-between">
+        <h2>Bulletin Board</h2>
+        <Modal />
+      </div>
       <CardList data={data} />
     </>
   );

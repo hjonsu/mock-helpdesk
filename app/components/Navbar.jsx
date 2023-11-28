@@ -5,7 +5,6 @@ import Logo from "../../public/help-icon.png";
 import Logout from "./Logout";
 
 export default function Navbar(user) {
-  console.log(user, "inside the navbar");
   return (
     <nav>
       <Image
