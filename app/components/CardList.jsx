@@ -19,7 +19,7 @@ export default function CardList({ data, tickets }) {
         if (tickets)
           return (
             <div key={item.id} className="card my-5">
-              <Link href={`/tickets/${ticket.id}`}>
+              <Link href={`/tickets/${item.id}`}>
                 <h3>{item.title}</h3>
                 <p>{item.body.slice(0, 180)}...</p>
                 <div className={`pill ${item.priority}`}>
