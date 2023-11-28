@@ -16,11 +16,24 @@ export default async function DashboardLayout({ children }) {
 
   const { data } = await supabase.auth.getSession();
 
-  !data.session ? redirect("/login") : null;
+  const user = await supabase
+    .from("profiles")
+    .select()
+    .eq("id", data.session.user.id)
+    .single();
 
+  if (user.data.error) {
+    throw new Error("Could not get user information");
+  }
+
+  !data.session ? redirect("/login") : null;
+  const userData = {
+    ...user.data,
+    email: data.session.user.email,
+  };
   return (
     <>
-      <Navbar prop={data.session.user} />
+      <Navbar user={userData} />
       {children}
     </>
   );

@@ -16,10 +16,16 @@ export default function Navbar(user) {
       />
       <h1>Mock Helpdesk</h1>
       <Link href="/">Dashboard</Link>
-      <Link href="/tickets" className="mr-auto">
-        Tickets
+      <Link href="/tickets">Tickets</Link>
+      <Link href="/profile" className="mr-auto">
+        Profile
       </Link>
-      {user && <span>Welcome {user.prop.email}</span>}
+      {user.user.first_name && (
+        <span>
+          Welcome {user.user.first_name} {user.user.last_name}
+        </span>
+      )}
+      {!user.user.first_name && <span>Welcome {user.user.email}</span>}
       {user && <Logout />}
     </nav>
   );

@@ -1,12 +1,14 @@
 import CardList from "@/app/components/CardList";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import Link from "next/link";
 
 async function getTickets() {
   const supabase = createServerComponentClient({ cookies });
 
-  const { data, error } = await supabase.from("tickets").select();
+  const { data, error } = await supabase
+    .from("tickets")
+    .select()
+    .order("created_at", { ascending: false });
 
   error ? console.log(error.message) : null;
 
@@ -14,8 +16,6 @@ async function getTickets() {
 }
 
 export default async function TicketList() {
-  // psuedo delay
-  // await new Promise((resolve) => setTimeout(resolve, 20000));
   const tickets = await getTickets();
   return (
     <>
@@ -26,5 +26,3 @@ export default async function TicketList() {
     </>
   );
 }
-
-// /tickets/id/info

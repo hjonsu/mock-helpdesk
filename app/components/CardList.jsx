@@ -2,8 +2,10 @@
 import { useState } from "react";
 import Pagination from "./Paginate";
 import { paginate } from "../helpers/paginate";
+import Link from "next/link";
+import DeleteIcon from "../(dashboard)/DeleteIcon";
 
-export default function CardList({ data, tickets }) {
+export default function CardList({ data, ticket, session }) {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 5;
 
@@ -16,7 +18,7 @@ export default function CardList({ data, tickets }) {
   return (
     <>
       {paginatedPosts.map((item, i) => {
-        if (tickets)
+        if (ticket)
           return (
             <div key={item.id} className="card my-5">
               <Link href={`/tickets/${item.id}`}>
@@ -30,9 +32,16 @@ export default function CardList({ data, tickets }) {
           );
         return (
           <div className="card" key={i}>
-            <h3>{item.title}</h3>
+            <div className="flex items-center">
+              <h3>{item.title}</h3>
+              {session.user.email === item.user_email && (
+                <DeleteIcon id={item.id} />
+              )}
+            </div>
             <p>{item.body}</p>
-            <p className="text-xs">From: {item.user_email}</p>
+            <div className="flex items-center">
+              <p className="text-xs">From: {item.user_email}</p>
+            </div>
           </div>
         );
       })}
