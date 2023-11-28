@@ -39,6 +39,22 @@ export async function deleteTicket(id) {
   redirect("/tickets");
 }
 
+export async function deleteNotice(id) {
+  const supabase = createServerActionClient({ cookies });
+
+  console.log("reaching here!!");
+
+  const { error } = await supabase.from("notices").delete().eq("id", id);
+  console.log(error);
+  if (error) {
+    console.log(error);
+    throw new Error("Failed to delete bulletin.");
+  }
+
+  revalidatePath("/");
+  redirect("/");
+}
+
 export async function updateProfile(formData) {
   const profileInfo = Object.fromEntries(formData);
   const supabase = createServerActionClient({ cookies });

@@ -6,6 +6,10 @@ import Modal from "../components/Modal";
 export default async function BulletinBoard() {
   const supabase = createServerComponentClient({ cookies });
 
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
   const { data, error } = await supabase
     .from("notices")
     .select()
@@ -19,7 +23,7 @@ export default async function BulletinBoard() {
         <h2>Bulletin Board</h2>
         <Modal />
       </div>
-      <CardList data={data} />
+      <CardList data={data} session={session} />
     </>
   );
 }

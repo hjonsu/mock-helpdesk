@@ -9,6 +9,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
       <ul className="flex justify-center items-center list-none gap-0.5">
         {pages.map((page) => (
           <li
+            onClick={() => onPageChange(page)}
             key={page}
             className={
               page === currentPage
@@ -16,9 +17,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
                 : `flex justify-center items-center w-8 border-2 border-slate-500 rounded cursor-pointer text-black`
             }
           >
-            <a className="cursor-pointer" onClick={() => onPageChange(page)}>
-              {page}
-            </a>
+            <a className="cursor-pointer">{page}</a>
           </li>
         ))}
       </ul>

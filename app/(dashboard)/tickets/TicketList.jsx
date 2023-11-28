@@ -5,7 +5,10 @@ import { cookies } from "next/headers";
 async function getTickets() {
   const supabase = createServerComponentClient({ cookies });
 
-  const { data, error } = await supabase.from("tickets").select();
+  const { data, error } = await supabase
+    .from("tickets")
+    .select()
+    .order("created_at", { ascending: false });
 
   error ? console.log(error.message) : null;
 
