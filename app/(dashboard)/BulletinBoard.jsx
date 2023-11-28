@@ -19,7 +19,7 @@ export default async function BulletinBoard() {
   return (
     <>
       <h2>Bulletin Board</h2>
-      <CardList notices={data} />
+      <CardList data={data} />
     </>
   );
 }
