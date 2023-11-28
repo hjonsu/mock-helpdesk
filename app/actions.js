@@ -45,3 +45,42 @@ export async function deleteTicket(id) {
   revalidatePath("/tickets");
   redirect("/tickets");
 }
+
+export async function updateProfile(formData) {
+  const profileInfo = Object.fromEntries(formData);
+  const supabase = createServerActionClient({ cookies });
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  const check = await supabase
+    .from("profiles")
+    .select()
+    .eq("id", session.user.id)
+    .single();
+
+  if (check.data.error) {
+    console.log(check.data.error, "inside check async function");
+    throw new Error("Could not get user information");
+  }
+
+  const items = {
+    id: session.user.id,
+    first_name: profileInfo.first,
+    last_name: profileInfo.last,
+  };
+
+  const { error } = await supabase
+    .from("profiles")
+    .upsert(items, { onConflict: "id" })
+    .eq("id", session.user.id);
+
+  if (error) {
+    console.log(error);
+    throw new Error("Failed to change user info.");
+  }
+
+  revalidatePath("/profile");
+  redirect("/profile");
+}

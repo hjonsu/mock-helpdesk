@@ -5,6 +5,7 @@ import Logo from "../../public/help-icon.png";
 import Logout from "./Logout";
 
 export default function Navbar(user) {
+  console.log(user, "inside the navbar");
   return (
     <nav>
       <Image
@@ -19,7 +20,12 @@ export default function Navbar(user) {
       <Link href="/tickets" className="mr-auto">
         Tickets
       </Link>
-      {user && <span>Welcome {user.prop.email}</span>}
+      {user.user.first_name && (
+        <span>
+          Welcome {user.user.first_name} {user.user.last_name}
+        </span>
+      )}
+      {!user.user.first_name && <span>Welcome {user.user.email}</span>}
       {user && <Logout />}
     </nav>
   );
