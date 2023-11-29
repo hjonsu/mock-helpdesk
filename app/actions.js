@@ -65,6 +65,7 @@ export async function updateProfile(formData) {
 
   const items = {
     id: session.user.id,
+    updated_at: new Date(Date.now()).toISOString(),
   };
 
   for (let item in profileInfo) {

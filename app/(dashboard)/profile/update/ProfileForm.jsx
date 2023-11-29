@@ -13,7 +13,7 @@ export default function ProfileForm() {
         <input
           name="username"
           required
-          pattern="[A-Za-z9-0]{3,}"
+          pattern="[A-Za-z0-9]{3,}"
           placeholder="3 Characters Minimum"
         ></input>
       </label>

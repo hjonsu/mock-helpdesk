@@ -5,6 +5,7 @@ import Logo from "../../public/help-icon.png";
 import Logout from "./Logout";
 
 export default function Navbar(user) {
+  console.log(user, user.user, "user");
   return (
     <nav>
       <Image
@@ -21,7 +22,9 @@ export default function Navbar(user) {
         Profile
       </Link>
       {user.user.username && <span>Welcome {user.user.username}</span>}
-      {!user.user.username && <span>Welcome {user.user.full_name}</span>}
+      {!user.user.username && user.user.full_name && (
+        <span>Welcome {user.user.full_name}</span>
+      )}
       {!user.user.usename && !user.user.full_name && (
         <span>Welcome {user.user.email}</span>
       )}
