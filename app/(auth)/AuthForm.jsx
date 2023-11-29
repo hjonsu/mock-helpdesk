@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // useState means we must use client component
 
-export default function AuthForm({ handleSubmit }) {
+export default function AuthForm({ handleSubmit, submitting }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +28,9 @@ export default function AuthForm({ handleSubmit }) {
           required
         />
       </label>
-      <button className="btn-primary">Submit</button>
+      <button className="btn-primary">
+        {submitting ? "Submitting" : "Submit"}
+      </button>
     </form>
   );
 }
