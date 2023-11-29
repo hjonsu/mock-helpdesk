@@ -10,9 +10,11 @@ export async function POST(request) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  await supabase
-    .from("notices")
-    .insert({ ...notice, user_email: session.user.email });
+  await supabase.from("bulletins").insert({
+    ...notice,
+    email: session.user.email,
+    owner_id: session.user.id,
+  });
 
   return new NextResponse();
 }

@@ -11,7 +11,7 @@ export default async function BulletinBoard() {
   } = await supabase.auth.getSession();
 
   const { data, error } = await supabase
-    .from("notices")
+    .from("bulletins")
     .select()
     .order("created_at", { ascending: false });
 

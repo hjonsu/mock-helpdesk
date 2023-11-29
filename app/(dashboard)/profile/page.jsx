@@ -27,12 +27,16 @@ export default async function page() {
             <h2>Profile: </h2>
           </div>
           <div className="flex flex-row w-full items-center justify-between">
-            <h3>First Name: </h3>
-            <p className="mx-4">{data.first_name}</p>
+            <h3>Username: </h3>
+            <p className="mx-4">{data.username}</p>
           </div>
           <div className="flex flex-row w-full items-center justify-between">
-            <h3>Last Name: </h3>
-            <p className="mx-4">{data.last_name}</p>
+            <h3>Full Name: </h3>
+            <p className="mx-4">{data.full_name}</p>
+          </div>
+          <div className="flex flex-row w-full items-center justify-between">
+            <h3>Personal Site</h3>
+            <p className="mx-4">{data.website}</p>
           </div>
           <div className="flex flex-row w-full items-center justify-between">
             <h3>Email: </h3>

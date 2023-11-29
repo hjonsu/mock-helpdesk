@@ -20,12 +20,11 @@ export default function Navbar(user) {
       <Link href="/profile" className="mr-auto">
         Profile
       </Link>
-      {user.user.first_name && (
-        <span>
-          Welcome {user.user.first_name} {user.user.last_name}
-        </span>
+      {user.user.username && <span>Welcome {user.user.username}</span>}
+      {!user.user.username && <span>Welcome {user.user.full_name}</span>}
+      {!user.user.usename && !user.user.full_name && (
+        <span>Welcome {user.user.email}</span>
       )}
-      {!user.user.first_name && <span>Welcome {user.user.email}</span>}
       {user && <Logout />}
     </nav>
   );

@@ -42,10 +42,11 @@ export async function deleteTicket(id) {
 export async function deleteNotice(id) {
   const supabase = createServerActionClient({ cookies });
 
-  console.log("reaching here!!");
+  const { data, error } = await supabase
+    .from("bulletins")
+    .delete()
+    .eq("id", id);
 
-  const { error } = await supabase.from("notices").delete().eq("id", id);
-  console.log(error);
   if (error) {
     console.log(error);
     throw new Error("Failed to delete bulletin.");
@@ -58,10 +59,19 @@ export async function deleteNotice(id) {
 export async function updateProfile(formData) {
   const profileInfo = Object.fromEntries(formData);
   const supabase = createServerActionClient({ cookies });
-
   const {
     data: { session },
   } = await supabase.auth.getSession();
+
+  const items = {
+    id: session.user.id,
+  };
+
+  for (let item in profileInfo) {
+    if (profileInfo.hasOwnProperty(item)) {
+      items[item] = profileInfo[item];
+    }
+  }
 
   const check = await supabase
     .from("profiles")
@@ -72,12 +82,6 @@ export async function updateProfile(formData) {
   if (check.data.error) {
     throw new Error("Could not get user information");
   }
-
-  const items = {
-    id: session.user.id,
-    first_name: profileInfo.first,
-    last_name: profileInfo.last,
-  };
 
   const { error } = await supabase
     .from("profiles")
@@ -101,9 +105,11 @@ export async function addNotice(formData) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const { error } = await supabase
-    .from("notices")
-    .insert({ ...noticeInfo, user_email: session.user.email });
+  const { error } = await supabase.from("notices").insert({
+    ...noticeInfo,
+    user_email: session.user.email,
+    user_id: session.user.id,
+  });
 
   if (error) {
     throw new Error("Failed to create new bulletin.");

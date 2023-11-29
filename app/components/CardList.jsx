@@ -15,6 +15,8 @@ export default function CardList({ data, ticket, session }) {
 
   const paginatedPosts = paginate(data, currentPage, pageSize);
 
+  console.log(data, "data here");
+
   return (
     <>
       {paginatedPosts.map((item, i) => {
@@ -34,13 +36,11 @@ export default function CardList({ data, ticket, session }) {
           <div className="card" key={i}>
             <div className="flex items-center">
               <h3>{item.title}</h3>
-              {session.user.email === item.user_email && (
-                <DeleteIcon id={item.id} />
-              )}
+              {session.user.email === item.email && <DeleteIcon id={item.id} />}
             </div>
             <p>{item.body}</p>
             <div className="flex items-center">
-              <p className="text-xs">From: {item.user_email}</p>
+              <p className="text-xs">From: {item.email}</p>
             </div>
           </div>
         );
