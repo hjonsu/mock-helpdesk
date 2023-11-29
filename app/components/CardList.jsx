@@ -4,6 +4,7 @@ import Pagination from "./Paginate";
 import { paginate } from "../helpers/paginate";
 import Link from "next/link";
 import DeleteIcon from "../(dashboard)/DeleteIcon";
+import truncate from "../helpers/truncate";
 
 export default function CardList({ data, ticket, session }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +24,7 @@ export default function CardList({ data, ticket, session }) {
             <div key={item.id} className="card my-5">
               <Link href={`/tickets/${item.id}`}>
                 <h3>{item.title}</h3>
-                <p>{item.body.slice(0, 180)}...</p>
+                <p>{truncate(item.body, 150)}</p>
                 <div className={`pill ${item.priority}`}>
                   {item.priority} priority
                 </div>
@@ -34,19 +35,17 @@ export default function CardList({ data, ticket, session }) {
           <div className="card" key={i}>
             <div className="flex items-center">
               <h3>{item.title}</h3>
-              {session.user.email === item.user_email && (
-                <DeleteIcon id={item.id} />
-              )}
+              {session.user.email === item.email && <DeleteIcon id={item.id} />}
             </div>
             <p>{item.body}</p>
             <div className="flex items-center">
-              <p className="text-xs">From: {item.user_email}</p>
+              <p className="text-xs">From: {item.email}</p>
             </div>
           </div>
         );
       })}
       <Pagination
-        items={data.length} // 100
+        items={data.length} // data.length
         currentPage={currentPage} // 1
         pageSize={pageSize} // 5
         onPageChange={onPageChange}

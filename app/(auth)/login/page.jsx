@@ -7,10 +7,12 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e, email, password) => {
     e.preventDefault();
+    setSubmitting(true);
     setError("");
     const supabase = createClientComponentClient();
     const { error } = await supabase.auth.signInWithPassword({
@@ -18,13 +20,18 @@ export default function Login() {
       password,
     });
 
-    error ? setError(error.message) : router.push("/");
+    if (error) {
+      setSubmitting(false);
+      setError(error.message);
+    } else {
+      router.push("/");
+    }
   };
 
   return (
     <main>
       <h2 className="text-center">Login</h2>
-      <AuthForm handleSubmit={handleSubmit} />
+      <AuthForm handleSubmit={handleSubmit} submitting={submitting} />
       {error && <div className="error">{error}</div>}
     </main>
   );

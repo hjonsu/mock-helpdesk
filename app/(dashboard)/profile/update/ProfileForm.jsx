@@ -5,13 +5,23 @@ export default function ProfileForm() {
   return (
     <form action={updateProfile}>
       <label>
-        First name:
-        <input required placeholder="John" name="first"></input>
+        Full name:
+        <input required placeholder="John Appleseed" name="full_name"></input>
       </label>
       <label>
-        Last name:
-        <input required placeholder="Appleseed" name="last"></input>
+        Username:
+        <input
+          name="username"
+          required
+          pattern="[A-Za-z0-9]{3,}"
+          placeholder="3 Characters Minimum"
+        ></input>
       </label>
+      <label>
+        Personal site:
+        <input name="website" placeholder="Optional"></input>
+      </label>
+
       <SubmitButton />
     </form>
   );

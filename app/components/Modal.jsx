@@ -1,20 +1,40 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaNotesMedical } from "react-icons/fa6";
 import NoticeForm from "./NoticeForm";
 
 export default function Modal({}) {
   const [open, setOpen] = useState(false);
+  // const ref = useRef(null);
 
   const onClick = () => {
     setOpen(!open);
   };
 
+  // listens for enter key
+  // useEffect(() => {
+  //   const listener = (event, e) => {
+  //     if (event.code === "Enter" || event.code === "NumpadEnter") {
+  //       console.log("Enter key was pressed. Run your function.");
+  //       event.preventDefault();
+  //       onClick();
+  //     }
+  //   };
+  //   document.addEventListener("keydown", listener);
+  //   return () => {
+  //     document.removeEventListener("keydown", listener);
+  //   };
+  // }, []);
+
   return (
     <>
       <FaNotesMedical
-        className="my-auto cursor-pointer scale-125"
+        id="bulletinForm"
+        className="my-auto cursor-pointer scale-125 opacity-80 duration-300	transition-all hover:scale-150 hover:opacity-100"
+        tabIndex={0}
         onClick={onClick}
+        aria-describedby="Button to create new bulletin"
+        aria-label="Create new bulletin"
       />
 
       <div

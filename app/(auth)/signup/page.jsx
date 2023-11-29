@@ -9,9 +9,11 @@ import { useRouter } from "next/navigation";
 export default function SignUp() {
   const router = useRouter();
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e, email, password) => {
     e.preventDefault();
+    setSubmitting(true);
 
     const supabase = createClientComponentClient();
 
@@ -24,6 +26,7 @@ export default function SignUp() {
     });
 
     if (error) {
+      setSubmitting(false);
       setError(error.message);
     }
     if (!error) {
@@ -33,7 +36,7 @@ export default function SignUp() {
   return (
     <main>
       <h2 className="text-center">Sign Up</h2>
-      <AuthForm handleSubmit={handleSubmit} />
+      <AuthForm handleSubmit={handleSubmit} submitting={submitting} />
       {error && <div className="error">{error}</div>}
     </main>
   );
