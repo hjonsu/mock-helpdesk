@@ -12,7 +12,10 @@ export default function Logout() {
     !error ? router.push("/login") : console.log(error);
   };
   return (
-    <button className="btn-secondary" onClick={handleLogout}>
+    <button
+      className="p-5 text-lg md:text-md md:bg-red-600 md:p-2"
+      onClick={handleLogout}
+    >
       Logout
     </button>
   );

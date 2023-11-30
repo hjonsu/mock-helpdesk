@@ -1,34 +1,22 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import Logo from "../../public/help-icon.png";
-import Logout from "./Logout";
-
-export default function Navbar(user) {
-  console.log(user, user.user, "user");
+import NavMobile from "./NavMobile.jsx";
+import NavDesktop from "./NavDesktop.jsx";
+import Image from "next/image.js";
+import Logo from "../../public/handshake-angle-solid.svg";
+const Navbar = (user) => {
   return (
-    <nav>
-      <Image
-        src={Logo}
-        alt="Mock helpdesk logo"
-        width={40}
-        quality={100}
-        placeholder="blur"
-      />
-      <h1>Mock Helpdesk</h1>
-      <Link href="/">Dashboard</Link>
-      <Link href="/tickets">Tickets</Link>
-      <Link href="/profile" className="mr-auto">
-        Profile
-      </Link>
-      {user.user.username && <span>Welcome {user.user.username}</span>}
-      {!user.user.username && user.user.full_name && (
-        <span>Welcome {user.user.full_name}</span>
-      )}
-      {!user.user.usename && !user.user.full_name && (
-        <span>Welcome {user.user.email}</span>
-      )}
-      {user && <Logout />}
-    </nav>
+    <div className="fixed top-0 left-0 right-0 bg-neutral-950 border-b border-neutral-700 z-10 px-5">
+      <nav
+        id="nav"
+        className="flex items-center justify-between w-full md:justify-start py-3 lg:py-5"
+      >
+        <div className="mx-2">
+          <Image src={Logo} alt="Mock helpdesk logo" width={40} quality={100} />
+        </div>
+        <NavDesktop user={user} />
+        <NavMobile user={user} />
+      </nav>
+    </div>
   );
-}
+};
+
+export default Navbar;

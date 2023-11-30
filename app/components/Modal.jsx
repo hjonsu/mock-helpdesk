@@ -44,7 +44,7 @@ export default function Modal({}) {
             : `fixed opacity-0 z-10 left-0 top-0 w-full	h-full overflow-auto bg-slate-700/60 duration-300	transition-opacity invisible`
         }
       >
-        <div className="bg-[#cbd5e1] my-14 mx-auto p-4 max-w-md opacity-100">
+        <div className="bg-transparent my-14 mx-auto p-4 max-w-md opacity-100">
           <span
             className="float-right text-lg text-semibold hover:text-black hover:cursor-pointer focus:text-black focus:cursor-pointer"
             onClick={onClick}

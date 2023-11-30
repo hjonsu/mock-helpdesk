@@ -3,24 +3,17 @@
 @tailwind utilities;
 
 /* base styles */
-
 body {
-  background: #cbd5e1;
-  @apply text-gray-500 m-8;
-}
-.cropped-height {
-  max-height: 65svh;
-  scrollbar-gutter: stable both-edges;
-}
-.cropped-height-unfill {
-  scrollbar-gutter: stable both-edges;
+  background: url("../public/endless-constellation.svg");
+  @apply text-gray-200
+    m-8;
 }
 h1,
 h2 {
   @apply font-bold text-primary text-lg;
 }
 main {
-  @apply max-w-5xl my-12 mx-auto px-8;
+  @apply max-w-5xl mx-auto mt-24 md:px-8;
 }
 main > h2 {
   @apply mb-4 pb-2 text-base;
@@ -29,24 +22,12 @@ p > a {
   @apply text-primary underline;
 }
 
-/* nav styles */
-nav {
-  @apply pb-4
-    border-b-2 border-slate-950
-    flex items-center gap-5 
-    my-10 mx-auto 
-    max-w-5xl;
-}
-nav a,
-nav span {
-  @apply text-gray-600;
-}
-nav a:hover {
-  @apply text-black;
-}
+/* nav */
 
-main nav {
-  @apply border-0;
+#nav ul a:hover {
+  transform: scale(1.1);
+  transition-duration: 300ms;
+  transition-property: all;
 }
 
 /* button styles */
@@ -105,20 +86,24 @@ form button {
 
 /* card styles */
 .card {
-  @apply bg-slate-200
+  @apply bg-slate-200/[0.9]
     shadow-sm 
     border-2
     rounded-md 
-    py-2 px-4 my-3
+    py-4 px-4 my-3
     relative 
     overflow-hidden;
 }
 .card h3 {
-  @apply font-bold text-gray-700 text-sm 
+  @apply font-bold text-gray-900 text-sm 
     mb-0;
 }
 .card p {
-  @apply my-2 text-sm leading-6;
+  @apply my-2 text-sm leading-6 text-black/[0.8];
+}
+
+.card main {
+  @apply mt-0;
 }
 
 /* pill styles */
@@ -139,6 +124,16 @@ form button {
 .card .pill {
   @apply absolute bottom-0 right-0 
     rounded-tl-md;
+}
+
+/* custom */
+
+.cropped-height {
+  max-height: 65svh;
+  padding-right: 0.25rem;
+}
+.cropped-height-unfill {
+  padding-right: 0.5rem;
 }
 
 /* scrollbar */

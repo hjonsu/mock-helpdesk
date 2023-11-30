@@ -12,7 +12,7 @@ export default async function AuthLayout({ children }) {
 
   return (
     <>
-      <nav>
+      <nav className="flex gap-4 items-center text-white">
         <h1>Mock Helpdesk</h1>
         <Link href="/signup">Sign Up</Link>
         <Link href="/login">Login</Link>

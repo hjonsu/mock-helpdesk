@@ -3,7 +3,7 @@ import BulletinBoard from "./BulletinBoard";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-2 md:flex-row">
+    <main className="flex flex-col mx-0 px-0 gap-2 md:flex-row">
       <div className="flex flex-col basis-1/3">
         <h2>Dashboard</h2>
         <p>
@@ -12,7 +12,7 @@ export default function Home() {
           management of your helpdesk operations. Be sure to update your profile
           information!
         </p>
-        <div className="flex justify-center my-8">
+        <div className="flex justify-center my-8 md:justify-start">
           <Link href="/tickets">
             <button className="btn-primary">View Tickets</button>
           </Link>

@@ -13,8 +13,8 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
             key={page}
             className={
               page === currentPage
-                ? `flex justify-center items-center border-2 w-8 rounded cursor-pointer bg-primary border-slate-950 text-white`
-                : `flex justify-center items-center w-8 border-2 border-slate-500 rounded cursor-pointer text-black`
+                ? `flex justify-center items-center border-2 w-8 rounded cursor-pointer bg-primary border-slate-500 text-white`
+                : `flex justify-center items-center w-8 border-2 border-slate-500 rounded cursor-pointer text-black bg-slate-200`
             }
           >
             <a className="cursor-pointer">{page}</a>
