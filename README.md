@@ -4,7 +4,7 @@
 <h1>Mock Helpdesk</h1>
 <p>A real-time helpdesk app that allows users to create view tickets and company notices.</p>
 
-Inspired by the latest trends in customer support.</p> <p>Built with <a href="https://nextjs.org/">Next.js</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, ,  </p> <b><a href="http://helpdeskapp.hirzalla.ca/" target="_blank"> » View Live Demo « </a></b> </div> 
+Inspired by the latest trends in customer support.</p> <p>Built with <a href="https://nextjs.org/">Next.js</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, ,  </p> <b><a href="http://mockdesk.vercel.app/" target="_blank"> » View Live Demo « </a></b> </div> 
 <p>Built with 
 <a href="https://nextjs.org/">Next.js</a>
 <a href="https://tailwindcss.com/">Tailwind CSS</a>
