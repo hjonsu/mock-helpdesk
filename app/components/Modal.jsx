@@ -1,30 +1,14 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { FaNotesMedical } from "react-icons/fa6";
 import NoticeForm from "./NoticeForm";
 
 export default function Modal({}) {
   const [open, setOpen] = useState(false);
-  // const ref = useRef(null);
 
   const onClick = () => {
     setOpen(!open);
   };
-
-  // listens for enter key
-  // useEffect(() => {
-  //   const listener = (event, e) => {
-  //     if (event.code === "Enter" || event.code === "NumpadEnter") {
-  //       console.log("Enter key was pressed. Run your function.");
-  //       event.preventDefault();
-  //       onClick();
-  //     }
-  //   };
-  //   document.addEventListener("keydown", listener);
-  //   return () => {
-  //     document.removeEventListener("keydown", listener);
-  //   };
-  // }, []);
 
   return (
     <>
