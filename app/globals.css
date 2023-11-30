@@ -130,10 +130,6 @@ form button {
 
 .cropped-height {
   max-height: 65svh;
-  padding-right: 0.25rem;
-}
-.cropped-height-unfill {
-  padding-right: 0.5rem;
 }
 
 /* scrollbar */

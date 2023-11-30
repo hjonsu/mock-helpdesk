@@ -8,7 +8,10 @@ export const dynamicParams = true;
 export async function generateMetadata({ params }) {
   const id = params.id;
 
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+
+  // const supabase = createServerComponentClient({ cookies });
 
   const { data, error } = await supabase
     .from("tickets")

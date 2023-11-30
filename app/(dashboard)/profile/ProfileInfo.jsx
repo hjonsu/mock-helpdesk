@@ -3,7 +3,9 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 
 export default async function ProfileInfo() {
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+  // const supabase = createServerComponentClient({ cookies });
 
   const {
     data: { session },
