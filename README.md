@@ -1,1 +1,107 @@
-# Mock Helpdesk App <div align="center"> <img src="docs/images/logo.png" width="100" /> <h1>Mock Helpdesk App</h1> <p>A responsive and modern helpdesk application to manage your queries effectively. Inspired by the latest trends in customer support.</p> <p>Built with <a href="https://nextjs.org/">Next.js</a>, <a href="https://tailwindcss.com/">Tailwind CSS</a>, <a href="https://supabase.io/">Supabase</a> </p> <b><a href="http://helpdeskapp.hjonsu.ca/" target="_blank"> » View Live Demo « </a></b> </div> ## 📚 Introduction <b>[Helpdesk App](http://helpdeskapp.hjonsu.ca/)</b> is a responsive application that allows agents to efficiently manage customer queries and improve customer satisfaction. The idea of the Helpdesk App came from the need to have a simple yet effective tool to manage customer queries. I wanted to create a tool that is functional, modern, and built with the latest technologies. ### 🤝 **Created By**: - Jonathan Su ([**@hjonsu**](https://github.com/hjonsu)) - _Full stack development, Backend, Database Architecture, Front-end, Design._ ## ⚛️ Stack and Tools - <b>Frontend</b>: <a href="https://nextjs.org/">Next.js</a>, <a href="https://tailwindcss.com/">Tailwind CSS</a> - <b>Backend</b>: <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://supabase.io/">Supabase</a> <!-- FEATURES --> ## ⭐ Features - Responsive and modern design using Tailwind CSS - Effective management of customer queries - User Authentication using Supabase - Robust database using PostgreSQL <!-- ## 🛠 Installation --> ## 📷 Screenshots The project is live <b><a href="http://helpdeskapp.hirzalla.ca/" target="_blank">here</a></b> <img src="./docs/images/demo.png" alt="demo" /> <img src="./docs/images/login.png" alt="login" /> <img src="./docs/images/landing.png" alt="landing" /> <img src="./docs/images/profile-edit.png" alt="profile-edit" /> <img src="./docs/images/server-new.png" alt="server-new" /> <img src="./docs/images/server-edit.png" alt="server-edit" /> <img src="./docs/images/channel-new.png" alt="channel-new" /> <img src="./docs/images/invite-code.png" alt="invite-code" /> <img src="./docs/images/seen.png" alt="seen" /> <img src="./docs/images/notification.png" alt="notification" /> <img src="./docs/images/mentions.png" alt="mentions" /> <img src="./docs/images/profile.png" alt="profile" /> <img src="./docs/images/roles.png" alt="roles" /> <img src="./docs/images/search-form.png" alt="search-form" /> <img src="./docs/images/search-result.png" alt="search-result" /> <img src="./docs/images/friend-received.png" alt="friend-received" /> <img src="./docs/images/friend-sent.png" alt="friend-sent" />
+<!-- TITLE -->
+<div align="center">
+<img src="docs/images/logo.png" width="100" />
+<h1>Mock Helpdesk</h1>
+<p>A real-time helpdesk app that allows users to create view tickets and company notices.</p>
+
+Inspired by the latest trends in customer support.</p> <p>Built with <a href="https://nextjs.org/">Next.js</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, ,  </p> <b><a href="http://helpdeskapp.hirzalla.ca/" target="_blank"> » View Live Demo « </a></b> </div> 
+<p>Built with 
+<a href="https://nextjs.org/">Next.js</a>
+<a href="https://tailwindcss.com/">Tailwind CSS</a>
+<a href="https://supabase.io/">Supabase</a>
+
+and hosted with 
+<a href="https://www.vercel.com/">Vercel</a></p>
+
+<b><a href="http://mockdesk.vercel.app" target="_blank">
+» View Live Demo «
+</a></b>
+
+</div>
+
+<!-- INTRODUCTION -->
+
+## 📚 Introduction
+
+<b>[Mock Helpdesk](http://mockdesk.vercel.app/)</b> is a full-stack application that allows members to create tickets and company posts, as well as delete their own tickets and notices, allowing all company members to view them. Users can also edit their own profile with a username, full name and even advertise a personal website. The app features a unique layout for both desktop and mobile views. Be sure to check out the app in mobile!
+
+### 🤝 **Collaborators**:
+
+- Jonathan Su ([**@hjonsu**](https://github.com/hjonsu)) - Full app development.
+
+<!-- FEATURES -->
+
+## ⭐ Features
+
+- Real-time events for all features
+- User authentication through cookies
+- User signup process with email verification
+- Users can customize their profiles
+- Users can create tickets
+- Users can delete their own tickets
+- Users can view tickets from others
+- Users can create posts on company bulletin board
+- Users can delete their own bulletin board posts
+- Users can view bulletin board posts from others
+
+
+<!-- ## 🛠 Installation
+
+The project is live
+<b><a href="http://mockdesk.vercel.app/" target="_blank">here</a></b>, but if you would prefer a local installation:
+
+1. Clone or download this repository
+   ```
+   git clone https://github.com/hjonsu/mock-helpdesk
+   ```
+2. Create a `.env` by using `.env.example` as a reference: `cp .env.example .env`
+3. Create a supabase account
+4. Update the `.env` file with correct supabase information
+5. Run following code in supabase SQL editor:
+```
+create table
+  public.profiles (
+    id uuid not null,
+    updated_at timestamp with time zone null,
+    username text null,
+    full_name text null,
+    avatar_url text null,
+    website text null,
+    constraint profiles_pkey primary key (id),
+    constraint profiles_username_key unique (username),
+    constraint profiles_id_fkey foreign key (id) references auth.users (id) on delete cascade,
+    constraint username_length check ((char_length(username) >= 3))
+  ) tablespace pg_default;
+```
+```create table
+  public.bulletins (
+    id bigint generated always as identity,
+    title character varying(300) null,
+    body text null,
+    email text null,
+    created_at timestamp with time zone not null default now(),
+    owner_id uuid null,
+    constraint bulletins_pkey primary key (id),
+    constraint bulletins_owner_id_fkey foreign key (owner_id) references profiles (id)
+  ) tablespace pg_default;```
+```create table
+  public.tickets (
+    id bigint generated by default as identity,
+    created_at timestamp with time zone not null default now(),
+    title text null,
+    body text null,
+    priority text null,
+    user_email text null,
+    constraint Tickets_pkey primary key (id)
+  ) tablespace pg_default;```
+5. Navigate to the project directory and install dependencies `cd mock-helpdesk && npm i`
+6. Run the development server: `npm run dev`
+7. Visit <a href="http://localhost:3000/">http://localhost:3000/</a> on your browser -->
+
+## 📷 Screenshots
+
+The project is live
+<b><a href="http://mockdesk.vercel.app/" target="_blank">here</a></b>
+
+
+
