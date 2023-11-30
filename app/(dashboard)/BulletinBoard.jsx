@@ -2,8 +2,6 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import CardList from "../components/CardList";
 import Modal from "../components/Modal";
-import { Suspense } from "react";
-import Loading from "./loading";
 
 export default async function BulletinBoard() {
   const supabase = createServerComponentClient({ cookies });
