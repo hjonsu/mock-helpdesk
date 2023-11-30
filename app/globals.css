@@ -21,6 +21,9 @@ main > h2 {
 p > a {
   @apply text-primary underline;
 }
+small {
+  @apply text-gray-500;
+}
 
 /* nav */
 

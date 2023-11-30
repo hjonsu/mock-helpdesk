@@ -58,9 +58,9 @@ export default async function TicketDetails({ params }) {
 
   return (
     <main>
-      <nav>
+      <nav className="flex flex-col gap-4 justify-center items-center md:flex-row md:justify-between my-8">
         <h2>Ticket Details</h2>
-        <div className="ml-auto">
+        <div className="md:ml-auto">
           {session.user.email === ticket.user_email && (
             <DeleteButton id={ticket.id} />
           )}
