@@ -22,7 +22,7 @@ export default function NoticeForm({ close }) {
   };
 
   return (
-    <form className="w-1/2 bg-slate-200/[0.9] text-black">
+    <form className="w-full bg-slate-200/[0.9] text-black">
       <label>
         <span>Title:</span>
         <input
