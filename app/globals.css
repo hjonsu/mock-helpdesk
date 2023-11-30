@@ -8,6 +8,13 @@ body {
   background: #cbd5e1;
   @apply text-gray-500 m-8;
 }
+.cropped-height {
+  max-height: 65svh;
+  scrollbar-gutter: stable both-edges;
+}
+.cropped-height-unfill {
+  scrollbar-gutter: stable both-edges;
+}
 h1,
 h2 {
   @apply font-bold text-primary text-lg;
@@ -102,7 +109,7 @@ form button {
     shadow-sm 
     border-2
     rounded-md 
-    py-3 px-4 my-4 
+    py-2 px-4 my-3
     relative 
     overflow-hidden;
 }
@@ -111,7 +118,7 @@ form button {
     mb-0;
 }
 .card p {
-  @apply my-4 text-sm leading-6;
+  @apply my-2 text-sm leading-6;
 }
 
 /* pill styles */
@@ -138,12 +145,16 @@ form button {
 
 ::-webkit-scrollbar {
   /* Customize the scrollbar width */
+  width: 10px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
   /* Customize the scrollbar track */
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   /* Customize the scrollbar thumb */
+  background: #555;
 }

@@ -6,7 +6,7 @@ const Pagination = ({ items, pageSize, currentPage, onPageChange }) => {
 
   return (
     <div>
-      <ul className="flex justify-center items-center list-none gap-0.5">
+      <ul className="flex justify-center items-center list-none gap-0.5 mt-2">
         {pages.map((page) => (
           <li
             onClick={() => onPageChange(page)}

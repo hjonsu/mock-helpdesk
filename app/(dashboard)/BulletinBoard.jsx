@@ -18,12 +18,12 @@ export default async function BulletinBoard() {
   error ? console.log(error) : null;
 
   return (
-    <>
+    <div className="flex flex-col basis-2/3">
       <div className="flex justify-between">
         <h2>Bulletin Board</h2>
         <Modal />
       </div>
       <CardList data={data} session={session} />
-    </>
+    </div>
   );
 }
