@@ -3,7 +3,9 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
 async function getTickets() {
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+  // const supabase = createServerComponentClient({ cookies });
 
   const { data, error } = await supabase
     .from("tickets")

@@ -1,9 +1,9 @@
 import ProfileForm from "./ProfileForm";
 
-export default function page() {
+export default function Update() {
   return (
-    <div>
+    <main>
       <ProfileForm />
-    </div>
+    </main>
   );
 }

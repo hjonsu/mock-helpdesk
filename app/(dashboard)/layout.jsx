@@ -12,7 +12,9 @@ export const metadata = {
 };
 
 export default async function DashboardLayout({ children }) {
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+  // const supabase = createServerComponentClient({ cookies });
 
   const { data } = await supabase.auth.getSession();
 

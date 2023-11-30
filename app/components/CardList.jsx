@@ -8,7 +8,11 @@ import truncate from "../helpers/truncate";
 
 export default function CardList({ data, ticket, session }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 5;
+  let pageSize = 5;
+
+  if (ticket) {
+    pageSize = 4;
+  }
 
   const onPageChange = (page) => {
     setCurrentPage(page);
@@ -16,34 +20,75 @@ export default function CardList({ data, ticket, session }) {
 
   const paginatedPosts = paginate(data, currentPage, pageSize);
 
-  return (
-    <>
-      {paginatedPosts.map((item, i) => {
-        if (ticket)
-          return (
-            <div key={item.id} className="card my-5">
-              <Link href={`/tickets/${item.id}`}>
-                <h3>{item.title}</h3>
-                <p>{truncate(item.body, 150)}</p>
-                <div className={`pill ${item.priority}`}>
-                  {item.priority} priority
-                </div>
-              </Link>
-            </div>
-          );
+  const renderContent = () => {
+    if (ticket) {
+      return paginatedPosts.map((item, i) => {
         return (
-          <div className="card" key={i}>
-            <div className="flex items-center">
+          <div key={item.id} className="card my-5 p-10">
+            <Link href={`/tickets/${item.id}`}>
               <h3>{item.title}</h3>
-              {session.user.email === item.email && <DeleteIcon id={item.id} />}
-            </div>
-            <p>{item.body}</p>
-            <div className="flex items-center">
-              <p className="text-xs">From: {item.email}</p>
-            </div>
+              <p>{truncate(item.body, 150)}</p>
+              <div className={`pill ${item.priority}`}>
+                {item.priority} priority
+              </div>
+            </Link>
           </div>
         );
-      })}
+      });
+    }
+
+    if (paginatedPosts.length < pageSize) {
+      return (
+        <div>
+          <div className="pr-1 overflow-y-scroll">
+            {paginatedPosts.map((item, i) => {
+              return (
+                <div className="card first:mt-0 last:mb:0" key={i}>
+                  <div className="flex items-center">
+                    <h3>{item.title}</h3>
+                    {session.user.email === item.email && (
+                      <DeleteIcon id={item.id} />
+                    )}
+                  </div>
+                  <p>{item.body}</p>
+                  <div className="flex items-center">
+                    <p className="text-xs">From: {item.email}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="overflow-hidden">
+        <div className="pr-1 cropped-height overflow-y-scroll">
+          {paginatedPosts.map((item, i) => {
+            return (
+              <div className="card first:mt-0 last:mb:0" key={i}>
+                <div className="flex items-center">
+                  <h3>{item.title}</h3>
+                  {session.user.email === item.email && (
+                    <DeleteIcon id={item.id} />
+                  )}
+                </div>
+                <p>{item.body}</p>
+                <div className="flex items-center">
+                  <p className="text-xs">From: {item.email}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <>
+      {renderContent()}
       <Pagination
         items={data.length} // data.length
         currentPage={currentPage} // 1

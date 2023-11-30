@@ -4,7 +4,9 @@ import CardList from "../components/CardList";
 import Modal from "../components/Modal";
 
 export default async function BulletinBoard() {
-  const supabase = createServerComponentClient({ cookies });
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
+  // const supabase = createServerComponnpm entClient({ cookies });
 
   const {
     data: { session },
@@ -18,12 +20,13 @@ export default async function BulletinBoard() {
   error ? console.log(error) : null;
 
   return (
-    <>
-      <div className="flex justify-between">
+    <div className="flex flex-col basis-2/3">
+      <div className="flex justify-between my-1">
         <h2>Bulletin Board</h2>
         <Modal />
       </div>
+
       <CardList data={data} session={session} />
-    </>
+    </div>
   );
 }
