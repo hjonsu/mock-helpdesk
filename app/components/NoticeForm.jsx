@@ -1,8 +1,10 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function NoticeForm({ close }) {
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,6 +21,17 @@ export default function NoticeForm({ close }) {
       method: "POST",
       body: JSON.stringify(info),
     });
+
+    const json = res.json();
+
+    if (!json.error) {
+      router.push("/");
+    }
+
+    if (json.error) {
+      setLoading(false);
+      throw new Error("Failed to submit post.");
+    }
   };
 
   return (
@@ -43,7 +56,7 @@ export default function NoticeForm({ close }) {
           value={body}
         />
       </label>
-      <button className="btn-primary" onClick={submitHandler}>
+      <button className="btn-primary" type="submit" onClick={submitHandler}>
         {!loading ? `Submit` : `Submitting`}
       </button>
     </form>
