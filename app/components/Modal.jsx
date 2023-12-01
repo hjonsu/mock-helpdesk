@@ -35,7 +35,7 @@ export default function Modal({}) {
           >
             &times;
           </span>
-          <NoticeForm />
+          <NoticeForm onClick={(event) => onClick()} />
         </div>
       </div>
     </>
