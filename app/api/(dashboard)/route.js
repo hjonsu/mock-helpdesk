@@ -6,17 +6,24 @@ export async function POST(request) {
   const notice = await request.json();
   const cookieStore = cookies();
   const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
-  // const supabase = createRouteHandlerClient({ cookies });
 
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const { error } = await supabase.from("bulletins").insert({
-    ...notice,
-    email: session.user.email,
-    owner_id: session.user.id,
-  });
+  const { data, error } = await supabase
+    .from("bulletins")
+    .insert({
+      ...notice,
+      email: session.user.email,
+      owner_id: session.user.id,
+    })
+    .select()
+    .single();
 
-  return NextResponse.json({ error: error });
+  if (!data) {
+    throw new Error("Could not post to bulletin.");
+  }
+
+  return NextResponse.json({ data: data, error: error });
 }
