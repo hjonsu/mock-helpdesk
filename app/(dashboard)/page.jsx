@@ -12,7 +12,7 @@ export default function Home() {
           Welcome to our Helpdesk Dashboard Application! This application is
           designed to provide you with real-time insights and effortless
           management of your helpdesk operations. Be sure to update your profile
-          information!
+          information and check out the website in mobile format!
         </p>
         <div className="flex justify-center my-8 md:justify-start">
           <Link href="/tickets">

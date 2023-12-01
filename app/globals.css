@@ -2,9 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 800px 800px;
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 800px 800px;
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 800px 800px;
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 800px 800px;
+  }
+}
+
 /* base styles */
 body {
-  background: url("../public/endless-constellation.svg");
+  background: url("../public/endless-constellation.svg") repeat 0 0;
+  margin-top: 13.5rem;
+  /* svg size is 800x800 */
+  -webkit-animation: bg-scrolling-reverse 20.92s infinite;
+  /* Safari 4+ */
+  -moz-animation: bg-scrolling-reverse 20.92s infinite;
+  /* Fx 5+ */
+  -o-animation: bg-scrolling-reverse 20.92s infinite;
+  /* Opera 12+ */
+  animation: bg-scrolling-reverse 20.92s infinite;
+  /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
   @apply text-gray-200
     m-8;
 }
@@ -31,6 +66,10 @@ small {
   transform: scale(1.1);
   transition-duration: 300ms;
   transition-property: all;
+}
+
+.desktop {
+  background: transparent;
 }
 
 /* button styles */
