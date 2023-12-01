@@ -12,11 +12,11 @@ export async function POST(request) {
     data: { session },
   } = await supabase.auth.getSession();
 
-  await supabase.from("bulletins").insert({
+  const { error } = await supabase.from("bulletins").insert({
     ...notice,
     email: session.user.email,
     owner_id: session.user.id,
   });
 
-  return new NextResponse();
+  return NextResponse.json({ error: error });
 }
