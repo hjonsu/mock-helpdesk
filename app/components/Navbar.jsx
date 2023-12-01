@@ -6,7 +6,7 @@ import Logo from "../../public/handshake-angle-solid.svg";
 
 const Navbar = (user) => {
   return (
-    <div className="fixed top-0 left-0 right-0 bg-neutral-950 border-b border-neutral-700 z-10 px-5">
+    <div className="fixed top-0 left-0 right-0 bg-neutral-950 border-b border-neutral-700 z-10 px-5 md:bg-transparent">
       <nav
         id="nav"
         className="flex items-center justify-between w-full md:justify-start py-3 lg:py-5"
