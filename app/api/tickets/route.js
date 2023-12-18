@@ -8,7 +8,6 @@ export async function POST(request) {
   // get supabase instance
   const cookieStore = cookies();
   const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
-  // const supabase = createRouteHandlerClient({ cookies });
 
   // get current user session
   const {
